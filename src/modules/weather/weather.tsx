@@ -12,13 +12,14 @@ import { DeletedWeatherList } from "./subModules/deletedWeatherList/deletedWeath
 const { TabPane } = Tabs;
 
 export const Weather: FC = () => {
-  const [city, setCity] = useState("Москва");
+  const [city, setCity] = useState("");
 
   const dispatch = useDispatch();
 
   const onGetWeather = useCallback(() => {
-    dispatch(WeatherAsyncActions.getWeather({ q: city }));
-  }, [city]);
+    dispatch(WeatherAsyncActions.getWeather({ q: city || "Москва" }));
+    setCity("");
+  }, [city, setCity, dispatch]);
 
   const location = useLocation();
   const { push } = useHistory();
@@ -33,9 +34,19 @@ export const Weather: FC = () => {
   const onChangeCity = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       const { value } = event.target;
-      setCity(value || "Москва");
+      setCity(value);
     },
     [setCity],
+  );
+
+  const onEnterInput = useCallback(
+    (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (event.keyCode === 13) {
+        dispatch(WeatherAsyncActions.getWeather({ q: city || "Москва" }));
+        setCity("");
+      }
+    },
+    [city, dispatch, setCity],
   );
 
   return (
@@ -46,6 +57,8 @@ export const Weather: FC = () => {
           title={"Город"}
           placeholder={"Москва"}
           onChange={onChangeCity}
+          onKeyDown={onEnterInput}
+          value={city}
         />
         <CustomButton onClick={onGetWeather} name={"Загрузить"} />
       </div>

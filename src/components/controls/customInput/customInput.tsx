@@ -7,7 +7,7 @@ interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   title: string;
 }
 
-export const CustomInput: FC<IProps> = memo((props) => {
+export const CustomInput: FC<IProps> = (props) => {
   const { title, touch, error, name, ...rest } = props;
 
   return (
@@ -21,4 +21,4 @@ export const CustomInput: FC<IProps> = memo((props) => {
       {error && touch && <div>{error}</div>}
     </div>
   );
-});
+};
