@@ -6,14 +6,12 @@ export interface ITableProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
 }
 
-export const Table: FC<ITableProps> = memo(
-  (props) => {
-    const { children, className, ...rest } = props;
+export const Table: FC<ITableProps> = memo((props) => {
+  const { children, className, ...rest } = props;
 
-    return (
-      <div className={cn(styles.table, className)} {...rest}>
-        {children}
-      </div>
-    );
-  },
-);
+  return (
+    <div className={cn(styles.table, className)} {...rest}>
+      {children}
+    </div>
+  );
+});

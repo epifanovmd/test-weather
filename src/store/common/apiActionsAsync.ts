@@ -51,8 +51,9 @@ export const callApi = <P, R>({
       dispatch(actions.failed({ params, error }));
       onFail && onFail(error, getState, extraArguments);
     } else {
-      dispatch(actions.done({ params, result: {status, message, data} }));
-      onSuccess && onSuccess(getState, {status, message, data}, extraArguments);
+      dispatch(actions.done({ params, result: { status, message, data } }));
+      onSuccess &&
+        onSuccess(getState, { status, message, data }, extraArguments);
     }
   };
 };

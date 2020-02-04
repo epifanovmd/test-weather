@@ -14,9 +14,11 @@ export interface IWeatherChangeParams {
 }
 
 export const WeatherActions = {
-  getWeather: actionCreator.async<IWeatherParams, IResponse<IWeatherDto>, Error>(
-    "Weather/GET_WEATHER",
-  ),
+  getWeather: actionCreator.async<
+    IWeatherParams,
+    IResponse<IWeatherDto>,
+    Error
+  >("Weather/GET_WEATHER"),
   deleteWeatherItem: actionCreator<IWeatherChangeParams>(
     "Weather/DELETE_WEATHER",
   ),
@@ -27,10 +29,6 @@ export const WeatherActions = {
     "Weather/CHANGE_WEATHER",
   ),
 
-  upWeatherItem: actionCreator<IWeatherChangeParams>(
-    "Weather/UP_WEATHER",
-  ),
-  downWeatherItem: actionCreator<IWeatherChangeParams>(
-    "Weather/DOWN_WEATHER",
-  ),
+  upWeatherItem: actionCreator<IWeatherChangeParams>("Weather/UP_WEATHER"),
+  downWeatherItem: actionCreator<IWeatherChangeParams>("Weather/DOWN_WEATHER"),
 };

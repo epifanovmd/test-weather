@@ -7,5 +7,7 @@ import { WeatherList } from "../../../../components/weatherList/weatherList";
 export const DeletedWeatherList: FC = () => {
   const weather = useSelector((state: IAppState) => state.weather.weather.data);
 
-  return <WeatherList list={weather.filter((item) => item.status === "DELETED")} />;
+  return (
+    <WeatherList list={weather.filter((item) => item.status === "DELETED")} />
+  );
 };
