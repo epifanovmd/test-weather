@@ -12,7 +12,7 @@ export interface IRoute {
 
 export const routes: IRoute[] = [
   {
-    path: "/",
+    path: "*",
     component: Weather,
     exact: true,
   },

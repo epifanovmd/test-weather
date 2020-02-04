@@ -5,7 +5,9 @@ import cn from "classnames";
 import styles from "./styles.module.scss";
 
 export const TableRowCell: FC<ITableProps & { label?: string }> = memo(
-  ({ children, className, label, ...rest }) => {
+  (props) => {
+    const { children, className, label, ...rest } = props;
+
     return (
       <div className={cn(styles["row-cell"], className)} {...rest}>
         <div className={cn(styles.title)}>{label}</div>

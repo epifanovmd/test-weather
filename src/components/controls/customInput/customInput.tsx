@@ -12,7 +12,11 @@ export const CustomInput: FC<IProps> = memo((props) => {
 
   return (
     <div>
-      {title && <label className={styles.title} htmlFor={name}>{title}</label>}
+      {title && (
+        <label className={styles.title} htmlFor={name}>
+          {title}
+        </label>
+      )}
       <input name={name} {...rest} />
       {error && touch && <div>{error}</div>}
     </div>

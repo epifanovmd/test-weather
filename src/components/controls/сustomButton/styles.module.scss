@@ -6,4 +6,11 @@
 
   text-align: center;
   cursor: pointer;
+  &:hover {
+    box-shadow: gray 0 0 1px 1px;
+  }
+}
+
+.small {
+  padding: 2px 5px;
 }

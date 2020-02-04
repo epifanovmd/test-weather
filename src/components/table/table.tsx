@@ -7,7 +7,9 @@ export interface ITableProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Table: FC<ITableProps> = memo(
-  ({ children, className, ...rest }) => {
+  (props) => {
+    const { children, className, ...rest } = props;
+
     return (
       <div className={cn(styles.table, className)} {...rest}>
         {children}

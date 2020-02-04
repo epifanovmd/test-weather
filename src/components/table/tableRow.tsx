@@ -5,7 +5,9 @@ import cn from "classnames";
 import styles from "./styles.module.scss";
 
 export const TableRow: FC<ITableProps> = memo(
-  ({ children, className, ...rest }) => {
+  (props) => {
+    const { children, className, ...rest } = props;
+
     return (
       <div className={cn(styles.row, className)} {...rest}>
         {children}
